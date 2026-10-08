@@ -1,0 +1,87 @@
+{
+  "had-s": {
+    "title": "Hukum Acara Perdata",
+    "code": "HAD/S",
+    "theme": "Courtroom Legal Drama",
+    "palette": {
+      "bg": "#120809",
+      "deep": "#3A0E16",
+      "accent": "#C8963C",
+      "accentText": "#E7BE6E",
+      "glow": "#FFC774"
+    },
+    "motion": "push-in",
+    "focal": {
+      "x": 0.62,
+      "y": 0.38
+    }
+  },
+  "had-b": {
+    "title": "Hukum Acara Perdata",
+    "code": "HAD/B",
+    "theme": "Litigation Drama",
+    "palette": {
+      "bg": "#0B0C0F",
+      "deep": "#2A0A10",
+      "accent": "#B01E2E",
+      "accentText": "#F0707C",
+      "glow": "#C9D2DC"
+    },
+    "motion": "lateral",
+    "focal": {
+      "x": 0.64,
+      "y": 0.36
+    }
+  },
+  "hkt-l": {
+    "title": "Hukum Ketenagakerjaan",
+    "code": "HKT/L",
+    "theme": "Industrial Relations Drama",
+    "palette": {
+      "bg": "#0F0B09",
+      "deep": "#3A1A0B",
+      "accent": "#D9641E",
+      "accentText": "#F59A4A",
+      "glow": "#FFB04A"
+    },
+    "motion": "lateral",
+    "focal": {
+      "x": 0.64,
+      "y": 0.42
+    }
+  },
+  "hkt-a": {
+    "title": "Hukum Ketenagakerjaan",
+    "code": "HKT/A",
+    "theme": "Corporate Employment Drama",
+    "palette": {
+      "bg": "#070A12",
+      "deep": "#0E1A30",
+      "accent": "#C2152F",
+      "accentText": "#F2667A",
+      "glow": "#8FB4E8"
+    },
+    "motion": "lateral",
+    "focal": {
+      "x": 0.64,
+      "y": 0.4
+    }
+  },
+  "hi-a": {
+    "title": "Hukum Internasional",
+    "code": "HI/A",
+    "theme": "Global Diplomatic Legal Drama",
+    "palette": {
+      "bg": "#03060E",
+      "deep": "#0A1D42",
+      "accent": "#2F8DFF",
+      "accentText": "#6FB4FF",
+      "glow": "#4FB2FF"
+    },
+    "motion": "globe",
+    "focal": {
+      "x": 0.61,
+      "y": 0.4
+    }
+  }
+}
