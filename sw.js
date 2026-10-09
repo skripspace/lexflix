@@ -1,7 +1,7 @@
 /* LEXFLIX service worker. Halaman selalu dari jaringan lebih dulu agar pembaruan langsung terlihat;
    salinan tersimpan dipakai saat tanpa sinyal. Artwork disimpan saat pertama dipakai. Data API tidak pernah disimpan di sini. */
-var NAMA = 'lexflix-v21';
-var AWAL = ["./","assets/app-S4EOM3IV.js","assets/app-HHUZRVIS.css","manifest.webmanifest","icons/lexflix-192.png"];
+var NAMA = 'lexflix-v22';
+var AWAL = ["./","assets/app-77C6TIV4.js","assets/app-P5RUGIGG.css","manifest.webmanifest","icons/lexflix-192.png"];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
   ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(AWAL); }).catch(function () {}));
