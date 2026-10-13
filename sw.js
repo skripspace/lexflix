@@ -1,18 +1,25 @@
 /* LEXFLIX service worker. Halaman selalu dari jaringan lebih dulu agar pembaruan langsung terlihat;
    salinan tersimpan dipakai saat tanpa sinyal. Artwork disimpan saat pertama dipakai. Data API tidak pernah disimpan di sini. */
-var NAMA = 'lexflix-v22';
-var AWAL = ["./","assets/app-77C6TIV4.js","assets/app-P5RUGIGG.css","manifest.webmanifest","icons/lexflix-192.png"];
+var NAMA = 'lexflix-v23';
+var AWAL = ["./","assets/app-45MFJRVP.js","assets/app-HGZC46CA.css","manifest.webmanifest","icons/lexflix-192.png"];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
   ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(AWAL); }).catch(function () {}));
 });
+// Model verifikasi wajah (±8 MB) disimpan di cache tersendiri yang tidak ikut dibuang saat situs diperbarui (alamatnya berversi: wajah/v1/).
+var WAJAH = 'lexflix-wajah-v1';
 self.addEventListener('activate', function (ev) {
-  ev.waitUntil(caches.keys().then(function (k) { return Promise.all(k.filter(function (n) { return n !== NAMA; }).map(function (n) { return caches.delete(n); })); }).then(function () { return self.clients.claim(); }));
+  ev.waitUntil(caches.keys().then(function (k) { return Promise.all(k.filter(function (n) { return n !== NAMA && n !== WAJAH; }).map(function (n) { return caches.delete(n); })); }).then(function () { return self.clients.claim(); }));
 });
 self.addEventListener('fetch', function (ev) {
   var r = ev.request, u = new URL(r.url);
   if (r.method !== 'GET' || u.origin !== self.location.origin) return;
-  var statis = /^\/(art|icons|assets)\//.test(u.pathname.replace(self.registration.scope.replace(self.location.origin, '').replace(/\/$/, ''), ''));
+  var jalur = u.pathname.replace(self.registration.scope.replace(self.location.origin, '').replace(/\/$/, ''), '');
+  if (/^\/wajah\//.test(jalur)) {
+    ev.respondWith(caches.open(WAJAH).then(function (c) { return c.match(r).then(function (x) { return x || fetch(r).then(function (j) { if (j && j.status === 200) c.put(r, j.clone()); return j; }); }); }));
+    return;
+  }
+  var statis = /^\/(art|icons|assets)\//.test(jalur);
   if (statis) {
     ev.respondWith(caches.match(r).then(function (x) {
       return x || fetch(r).then(function (j) { if (j && j.status === 200) { var s = j.clone(); caches.open(NAMA).then(function (c) { c.put(r, s); }); } return j; });
