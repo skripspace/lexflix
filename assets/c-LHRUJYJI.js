@@ -1,0 +1,1 @@
+var t=()=>new URL("assets/pdfjs-6.2.108/",document.baseURI).href,r=null;function o(){if(!r){let n=t();r=import(n+"pdf.min.mjs").then(e=>(e.GlobalWorkerOptions.workerSrc=n+"pdf.worker.min.mjs",e)),r.catch(()=>{r=null})}return r}export{t as a,o as b};
